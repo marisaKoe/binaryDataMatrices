@@ -1,0 +1,2 @@
+import binary_cogantes
+from binary_cogantes import main_cog
