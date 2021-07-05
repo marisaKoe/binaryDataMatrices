@@ -67,7 +67,6 @@ def get_bigrams(string):
     :param string: a word
     :return list: a list with all bigrams
     '''
-    #s = string.lower()
     return [string[i:i+2] for i in xrange(len(string) - 1)]
 
 def get_gappyBigrams(string):
@@ -88,16 +87,15 @@ def string_similarity(str1, str2):
     :param str1: first word
     :param str2: second word
     '''
-    #print str1, str2
     pairs1 = get_bigrams(str1)
     pairs2 = get_bigrams(str2)
-    #print pairs1, pairs2
+
     uni1 = get_unigrams(str1[1:-1])
     uni2 = get_unigrams(str2[1:-1])
-    #print uni1, uni2
+
     gappyPairs1 = get_gappyBigrams(str1)
     gappyPairs2 = get_gappyBigrams(str2)
-    #print gappyPairs1, gappyPairs2
+
     matches = []
     #check bigram matches
     for x in pairs1:
@@ -114,8 +112,7 @@ def string_similarity(str1, str2):
         for d in gappyPairs2:
             if c==d:
                 matches.append(c)
-    
-    #print matches           
+              
     return matches
     
     

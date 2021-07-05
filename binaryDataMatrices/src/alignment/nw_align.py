@@ -59,8 +59,6 @@ def main_nw_align(data_dict, pmi,sounds, dataName):
     for concept,langs in data_dict.items():
         
         count += 1
-        #checking purpose for mountain
-        #if concept == "Berg::N":
         #initialize the alignment dictionary
         alg_dict = defaultdict()
         #initializing the list of languages
@@ -114,27 +112,7 @@ def main_nw_align(data_dict, pmi,sounds, dataName):
                     
                 match = list(it.chain(*list_alg))
                 alg_dict[lang_pair]=match
-                
-            
-            
-                
-                ###for reverse word order
-                #word_reverse = word[::-1]
-                #word2_reverse = word2[::-1]
-                #print "words reversed " + word_reverse + " " + word2_reverse
-                #wrd_score2, alg2, alg2NotNeeded = nw(word_reverse, word2_reverse, lodict, gp1, gp2)
-                #print "word reversed " + word_reverse +" " +word2_reverse
-                #print alg2
-        #                 print alg
-        #                 for b in alg2:
-        #                     if not b in alg:
-        #                         alg.append(b)
-        #                 
-        #                 
-        #                 print alg2
-        #                 
-        #                 print "Union "
-        #                 print alg
+
 
             #create data matrix for the concept (in helper methods)
         create_dataMatrix(concept, list_sounds, sounds_gap, langs_list, alg_dict, dataName)
@@ -172,7 +150,6 @@ def create_dataMatrix(concept,list_sounds, sounds_gap, list_langs, alg_dict, dat
     
     #for each lang in the list (only needed for the reduced matrix)
     for langs in list_langs:
-        #print langs
         dataMatrix[langs]=defaultdict(int)
     #only needed for the reduced matrix
     overall_soundpairs=[]
@@ -197,7 +174,6 @@ def create_dataMatrix(concept,list_sounds, sounds_gap, list_langs, alg_dict, dat
         
         #for each sound alignment in the new list
         for a1 in new_alg:
-            #print a1
             #set the value in the dictionary of dicts to 1
             dataMatrix[l1][a1] = "1"
             dataMatrix[l2][a1] = "1"

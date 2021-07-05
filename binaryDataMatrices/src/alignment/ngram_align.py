@@ -23,8 +23,6 @@ def main_ngrams(data_dict,sounds, dataName):
 
     #for each concept in the dictionary
     for concept in data_dict:
-        #if concept is mountain (just for testing)
-        #if concept == "Bogen[Waffe]::N":
         alg_dict = defaultdict()
         #get the dictionray with all languages
         langs_dict = data_dict[concept]
@@ -32,7 +30,6 @@ def main_ngrams(data_dict,sounds, dataName):
         list_langs = langs_dict.keys()
         #make language pair for each possible combination
         for pair in it.combinations(list_langs,r=2):
-            #print pair
             #get the languages
             l1, l2 = pair
             #get the words
@@ -40,7 +37,6 @@ def main_ngrams(data_dict,sounds, dataName):
             word2 = langs_dict[l2]
             ####take synonyms into account and take all matched between all combinations into account
             if len(word1)==1 and len(word2)==1:
-                #pass
                 ##get the alignment
                 match = string_similarity("^"+word1[0]+"$", "^"+word2[0]+"$")
                 alg_dict[pair] = match
@@ -82,7 +78,6 @@ def create_dataMatrix(concept, list_langs, alg_dict,sounds,dataName):
     sound_pairs = [p[0]+p[1] for p in it.combinations(sounds,r=2)]
     #combine all sounds (unigrams and bigrams) into a list
     all_sounds = sounds+sound_pairs
-    #print all_sounds
     all_sounds.remove("^")
     all_sounds.remove("$")
     #initialize the data matrix

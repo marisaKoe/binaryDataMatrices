@@ -27,9 +27,6 @@ def main_cog(data_dict, outfolder):
     
     ##for each concept in the dictionary
     for concept,lang_dict in data_dict.items():
-        #if concept == "Berg::N":
-        #print concept
-        print concept
         ##initialize the datamatrix as a default dict with integers
         data_matrix = defaultdict(lambda: defaultdict(int))
         ##get the list of languages from the dictionary
@@ -70,12 +67,7 @@ def main_cog(data_dict, outfolder):
 
 if __name__ == '__main__':
     pass
-    
-#     f_cogs = "../input/nelexAsjp.cognates"
-#     dataName = "nelex"
-#     
-#     cog_dict = read_nelexCog(f_cogs)
-#     main_cog(cog_dict, dataName)
+
     
     
     

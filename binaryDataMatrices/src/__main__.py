@@ -3,15 +3,6 @@ Created on 19.07.2017
 
 @author: marisakoe
 
-
-
-TODO:
-write reading methods for nelex
-
-improve methods in ngramNW_align
-try it out for ielex again and see if the construction works
-
-
 '''
 from collections import defaultdict
 
@@ -35,8 +26,6 @@ def read_ielex(f):
     
     #initialize a default dict
     d = defaultdict(dict)
-    #cogid_dict = defaultdict(dict)
-    #data=defaultdict(dict)
     #for each line in the file
     for line in raw_data:
         line = line.strip()
@@ -44,7 +33,6 @@ def read_ielex(f):
         arr = line.split("\t")
         #language
         lang = arr[0]
-        
         #iso-code
         iso = arr[1]
         #gloss
@@ -64,8 +52,6 @@ def read_ielex(f):
         #word transcription
         asjp_word = arr[5].split(",")[0]
         asjp_word = asjp_word.replace(" ", "")
-        #tokenized_word = ipa2tokens(asjp_word)
-        #asjp_word = "".join(tokens2class(tokenized_word, 'asjp'))
         asjp_word = asjp_word.replace("%","")
         asjp_word = asjp_word.replace("~","")
         asjp_word = asjp_word.replace("*","")
@@ -115,12 +101,9 @@ def read_nelex(f):
         #sca=arr[5]
         #dolgo=arr[6]
         
-        
         #word transcription
         asjp_word = arr[4].split(",")[0]
         asjp_word = asjp_word.replace(" ", "")
-        #tokenized_word = ipa2tokens(asjp_word)
-        #asjp_word = "".join(tokens2class(tokenized_word, 'asjp'))
         asjp_word = asjp_word.replace("%","")
         asjp_word = asjp_word.replace("~","")
         asjp_word = asjp_word.replace("*","")
@@ -153,7 +136,6 @@ def read_nelexCogPMI(f):
     cog_dict = defaultdict(lambda: defaultdict(list))
     for line in raw_data[1:]:
         arr = line.strip().split("\t")
-        #print arr
         
         concept = arr[0]
         lang = arr[1]
@@ -193,23 +175,8 @@ def read_nelexCogJD(f):
         
 
 if __name__ == '__main__':
-    
-    #######################IELEX#########################
-    
-    
-#     f = "input/IELex-2016.tsv.asjp"
-#     data_dict = read_ielex(f)
-#     dataName = "ielex"
-#     pmi = "pmi-world.txt"
-#     sounds = "sounds41.txt"
-#     
-#     #main_nw_align(data_dict, pmi,sounds, dataName)
-#     #main_ngrams(data_dict, sounds, dataName)
-#     main_ngramsNW(data_dict, pmi, sounds, dataName)
-    
-    ###################NELEX#############################
-    
-    
+
+        
     #####needed to compute the data matrices with alignments
     f = "input/northeuralex-cldf.tsv"
     data_synonyms, data_plain = read_nelex(f)
@@ -229,11 +196,7 @@ if __name__ == '__main__':
 #     outfolderPMI = "output/"+dataName+"/data_matrices_cogantesPMI/"
 #     cog_dictPMI = read_nelexCogPMI(f_cogsPMI)
 #     main_cog(cog_dictPMI, outfolderPMI)
-#        
-#     f_cogsJD = "input/nelex_cognates_etym.tsv"
-#     outfolderJD = "output/nelex/data_matrices_cognatesJD/"
-#     cog_dictJD = read_nelexCogJD(f_cogsJD)
-#     main_cog(cog_dictJD, outfolderJD)
+
  
     
     

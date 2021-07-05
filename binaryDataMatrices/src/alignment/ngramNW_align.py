@@ -29,15 +29,12 @@ def main_ngramsNW(data_dict, pmi, sounds, dataName):
     d = nw_align(data_dict,pmi, sounds)
     #for each concept in the dictionary
     for concept in d:
-        #if concept == "Bogen[Waffe]::N":
         alg_dict = defaultdict()
         list_langs=[]
         #get the dictionray with all languages
         langs_dict = d[concept]
-        #print langs_dict
         #get all the languages in one list
         list_langPairs = langs_dict.keys()
-        #print list_langPairs
         #make language pair for each possible combination
         for pair in list_langPairs:
             l1, l2 = pair 
@@ -45,14 +42,11 @@ def main_ngramsNW(data_dict, pmi, sounds, dataName):
                 list_langs.append(l1)
             elif not l2 in list_langs:
                 list_langs.append(l2)
-                
-            #print pair
+
             #get the words
             word_list = langs_dict[pair]
-            #print word_list
             if len(word_list)==1:
                 match = string_similarity("^"+word_list[0][0]+"$", "^"+word_list[0][1]+"$")
-                #print match
                 alg_dict[pair] = match
             else:
                 match_list = []
@@ -60,9 +54,7 @@ def main_ngramsNW(data_dict, pmi, sounds, dataName):
                     match_pair = string_similarity("^"+words[0]+"$", "^"+words[1]+"$")
                     match_list.append(match_pair)
                 match = list(it.chain(*match_list))
-                #print match
                 alg_dict[pair] = match
-        #print alg_dict
         print "concept: ", concept
         print "number of matches: ", len(alg_dict.values())
         create_dataMatrix(concept, list_langs, alg_dict,sounds, dataName)
@@ -92,7 +84,6 @@ def create_dataMatrix(concept, list_langs, alg_dict, sounds, dataName):
     sound_pairs = [p[0]+p[1] for p in it.combinations(sounds,r=2)]
     #combinde all sounds (unigrams and bigrams) into a list
     all_sounds = sounds+sound_pairs
-    #print len(all_sounds)
     #initialize the data matrix
     dataMatrix = defaultdict(dict)
     ####needed if we want to compute the matrix with all possible sound pairs
@@ -105,7 +96,6 @@ def create_dataMatrix(concept, list_langs, alg_dict, sounds, dataName):
      
     #for each lang in the list (only needed for the reduced matrix)
     for langs in list_langs:
-        #print langs
         dataMatrix[langs]=defaultdict(int)
     #only needed for the reduced matrix
     overall_soundpairs=[]
@@ -189,13 +179,7 @@ def nw_align(data_dict,pmi, sounds):
     count = 0
     overall_algDict = defaultdict()
     for concept,langs in data_dict.items():
-        print concept
-        #if concept == "Bogen[Waffe]::N":
-        #if concept == "Berg::N":
-        #print concept
         count += 1
-        #checking purpose for mountain
-        #if concept == "Berg::N":
         #initialize the alignment dictionary
         alg_dict = defaultdict()
         #initializing the list of languages
@@ -210,7 +194,6 @@ def nw_align(data_dict,pmi, sounds):
         #append the language pair and their corresponding words to a list
         for lang_pair in it.combinations(langs_list,r=2):
             l1, l2 = lang_pair
-            #print l1,l2
             word = langs[l1]
             word2 = langs[l2]
              
@@ -245,7 +228,6 @@ def nw_align(data_dict,pmi, sounds):
                     list_alg.append(list(alg1))
      
                 alg_dict[lang_pair]=list_alg
-#     
         overall_algDict[concept] = alg_dict
         print count
                  
