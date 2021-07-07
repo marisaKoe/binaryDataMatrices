@@ -229,7 +229,6 @@ def nw_align(data_dict,pmi, sounds):
      
                 alg_dict[lang_pair]=list_alg
         overall_algDict[concept] = alg_dict
-        print count
                  
     return overall_algDict
 

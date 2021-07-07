@@ -76,7 +76,7 @@ def read_ielex(f):
 
 def read_nelex(f):
     '''
-    reads the nelex datafile, which can be downloaded from the website with the ASJP transcriptions
+    reads the nelex datafile, which can be downloaded from the homepage with the ASJP transcriptions
     :param f:
     '''
     
