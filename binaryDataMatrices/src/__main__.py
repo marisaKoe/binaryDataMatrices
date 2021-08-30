@@ -190,7 +190,7 @@ if __name__ == '__main__':
     
     
     #######needed for comptuting the data matrices with the different cognate judgements
-    #Taraks PMI method
+    #PMI method
 #     dataName = "nelex"
 #     f_cogsPMI = "input/nelexAsjp.cognates"
 #     outfolderPMI = "output/"+dataName+"/data_matrices_cogantesPMI/"
